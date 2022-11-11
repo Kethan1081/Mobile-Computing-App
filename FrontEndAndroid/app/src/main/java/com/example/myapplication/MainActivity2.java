@@ -40,7 +40,7 @@ public class MainActivity2 extends AppCompatActivity implements AdapterView.OnIt
 
 
     String state;
-    String url = "http://10.0.2.2:8000" + "/upload";
+    String url = "http://192.168.0.91:8000" + "/upload";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,16 +57,16 @@ public class MainActivity2 extends AppCompatActivity implements AdapterView.OnIt
         image.setImageBitmap(bitmap);
 
 
-        String[] arraySpinner = new String[]{
-                "Men", "Women", "Toys", "Gadgets"
-        };
-        Spinner s = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, arraySpinner);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        s.setAdapter(adapter);
+//        String[] arraySpinner = new String[]{
+//                "Men", "Women", "Toys", "Gadgets"
+//        };
+//        Spinner s = (Spinner) findViewById(R.id.spinner);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+//                android.R.layout.simple_spinner_item, arraySpinner);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        s.setAdapter(adapter);
         Button bt = (Button) findViewById(R.id.button2);
-        s.setOnItemSelectedListener(this);
+//        s.setOnItemSelectedListener(this);
         bt.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -75,7 +75,7 @@ public class MainActivity2 extends AppCompatActivity implements AdapterView.OnIt
                 OkHttpClient client=new OkHttpClient();
                 RequestBody f=new FormBody.Builder()
                         .add("category",encoded)
-                        .add("type", state).build();
+                        .build();
                 Request request=new Request.Builder().url(url).post(f).build();
                 client.newCall(request).enqueue(new Callback() {
                     @Override
@@ -102,5 +102,6 @@ public class MainActivity2 extends AppCompatActivity implements AdapterView.OnIt
 
     }
 }
+
 
 
